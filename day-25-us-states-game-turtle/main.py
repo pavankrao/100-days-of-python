@@ -41,7 +41,7 @@ while len(USER_GUESSED_STATES) < 50:
     except AttributeError:
         break
 
-    # if exit, save states to learn
+    # if exit, save missing states to learn
     if user_guess == "Exit":
         missing_states = []
         for state in ALL_US_STATES:
