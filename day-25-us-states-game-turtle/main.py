@@ -43,10 +43,7 @@ while len(USER_GUESSED_STATES) < 50:
 
     # if exit, save missing states to learn
     if user_guess == "Exit":
-        missing_states = []
-        for state in ALL_US_STATES:
-            if state not in USER_GUESSED_STATES:
-                missing_states.append(state)
+        missing_states = [state for state in ALL_US_STATES if state not in USER_GUESSED_STATES]
         missing_states_data = pandas.DataFrame(data=missing_states)
         missing_states_data.index += 1 # start index at 1
         missing_states_data.to_csv("states_to_learn.csv", header=False) # header=False removes the 0,
