@@ -50,7 +50,7 @@ while len(USER_GUESSED_STATES) < 50:
         break
 
     # if correct, print state name on map
-    if user_guess in ALL_US_STATES and user_guess not in USER_GUESSED_STATES: # Bug fixed same state printed again - yay!
+    if user_guess in ALL_US_STATES and user_guess not in USER_GUESSED_STATES:  # Bug fixed same state printed again - yay!
         t = turtle.Turtle()
         t.hideturtle()
         USER_GUESSED_STATES.append(user_guess)
