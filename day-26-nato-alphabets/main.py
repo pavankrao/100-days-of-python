@@ -1,42 +1,36 @@
-## list comprehension?
-## iterate a list, do some computations and produce another list
+# student_dict = {
+#     "student": ["Angela", "James", "Lily"], 
+#     "score": [56, 76, 98]
+# }
 
-# # simple list comprehension
-# numbers = [1,2,3]
-# new_numbers = [num + 1 for num in numbers]
-# print(new_numbers)
+# #Looping through dictionaries:
+# for (key, value) in student_dict.items():
+#     #Access key and value
+#     pass
 
-# # double nums
-# doubled = [num*2 for num in range(1,5)]
-# print(doubled)
+# student_data_frame = pandas.DataFrame(student_dict)
 
-# # uppercase names
-# short_names = ['alex', 'beth', 'caroline', 'eleanor', 'Freddie']
-# upper_case_names = [name.upper() for name in short_names if len(name) > 5]
-# print(upper_case_names)
+# #Loop through rows of a data frame
+# for (index, row) in student_data_frame.iterrows():
+#     #Access index and row
+#     #Access row.student or row.score
+#     pass
 
+import pandas as pd
 
-# # read files and print common numbers
-def list_of_nums(file_path):
-    """read filepath and return numbers as list
+#TODO 1. Create a dictionary in this format:
+#{"A": "Alfa", "B": "Bravo"}
+df = pd.read_csv('nato_phonetic_alphabet.csv')
+phonetic_dict = {data.letter: data.code for (index, data) in df.iterrows()}
 
-    Args:
-        file_path (str): filepath 
-    """
-    with open(file_path) as file:
-        return [int(line.strip()) for line in file.readlines()]
-
-def common_nums_between_lists(list1, list2):
-    """find common numbers in two lists
-
-    Args:
-        list1 (list): list1
-        list2 (list): list2
-    """
-    return [num for num in list1 if num in list2]
-
-
-file1_list_of_nums = list_of_nums('file1.txt')
-file2_list_of_nums = list_of_nums('file2.txt')
-common_nums = common_nums_between_lists(file1_list_of_nums, file2_list_of_nums)
-print(common_nums)
+#TODO 2. Create a list of the phonetic code words from a word that the user inputs.
+while True:
+    try:
+        word = input("Enter your word: ").upper()
+        #characters = list(word) #TIL: split chars of a word
+        output_list = [phonetic_dict[char] for char in word]
+        print(output_list)
+        break
+    except KeyError:
+        print("error: enter valid word containing alphabets.")
+        continue
